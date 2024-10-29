@@ -16,9 +16,13 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven {
+            url = uri("https://jitpack.io")
+        }
+        gradlePluginPortal()
     }
 }
 
 rootProject.name = "AndroidCoursePractice"
-include(":app")
+include(":app", ":touchview")
  
