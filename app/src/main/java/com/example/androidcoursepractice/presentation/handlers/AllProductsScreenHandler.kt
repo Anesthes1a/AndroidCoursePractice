@@ -1,8 +1,8 @@
-package com.example.androidcoursepractice.handlers
+package com.example.androidcoursepractice.presentation.handlers
 
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.NavHostController
-import com.example.androidcoursepractice.model.ScreenBarElements
+import com.example.androidcoursepractice.presentation.model.ScreenBarElements
 
 class AllProductsScreenHandler(
     val navController: NavHostController

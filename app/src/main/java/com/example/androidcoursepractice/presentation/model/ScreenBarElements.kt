@@ -1,4 +1,4 @@
-package com.example.androidcoursepractice.model
+package com.example.androidcoursepractice.presentation.model
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle

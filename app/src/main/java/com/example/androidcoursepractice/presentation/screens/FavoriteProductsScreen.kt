@@ -1,4 +1,4 @@
-package com.example.androidcoursepractice.screens
+package com.example.androidcoursepractice.presentation.screens
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -9,13 +9,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.androidcoursepractice.MainViewModel
-import com.example.androidcoursepractice.model.ScreenBarElements
+import com.example.androidcoursepractice.presentation.model.ScreenBarElements
 
 @Composable
-fun ProfileScreen(
-    viewModel: MainViewModel
-){
+fun FavoriteProductsScreen(){
     Surface(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -24,14 +21,14 @@ fun ProfileScreen(
                 Text(
                     modifier = Modifier
                         .padding(12.dp),
-                    text = ScreenBarElements.Profile.title ?: "Нет названия",
+                    text = ScreenBarElements.FavouriteProducts.title ?: "Нет названия",
                     fontSize = 36.sp
                 )
             }
         ) { innerPadding ->
             Text(
                 modifier = Modifier.padding(innerPadding),
-                text = "Hello Profile")
+                text = "Hello FavoriteProducts")
         }
     }
 }

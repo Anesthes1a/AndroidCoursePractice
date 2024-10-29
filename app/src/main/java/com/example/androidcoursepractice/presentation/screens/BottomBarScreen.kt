@@ -1,4 +1,4 @@
-package com.example.androidcoursepractice.screens
+package com.example.androidcoursepractice.presentation.screens
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -9,15 +9,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.example.androidcoursepractice.MainViewModel
-import com.example.androidcoursepractice.navigation.BottomBarUI
-import com.example.androidcoursepractice.navigation.NavGraph
-import com.example.androidcoursepractice.model.ScreenBarElements
+import com.example.androidcoursepractice.presentation.navigation.BottomBarUI
+import com.example.androidcoursepractice.presentation.navigation.NavGraph
+import com.example.androidcoursepractice.presentation.model.ScreenBarElements
 
 @Composable
 fun BottomBarScreen(
-    navController: NavHostController,
-    viewModel: MainViewModel
+    navController: NavHostController
 ) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
@@ -49,8 +47,7 @@ fun BottomBarScreen(
                 .padding(paddingValues)
         ) {
             NavGraph(
-                navController = navController,
-                viewModel = viewModel
+                navController = navController
             )
         }
     }

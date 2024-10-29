@@ -1,4 +1,4 @@
-package com.example.androidcoursepractice.navigation
+package com.example.androidcoursepractice.presentation.navigation
 
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
@@ -12,7 +12,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.example.androidcoursepractice.model.ScreenBarElements
+import com.example.androidcoursepractice.presentation.model.ScreenBarElements
 
 
 @Composable
