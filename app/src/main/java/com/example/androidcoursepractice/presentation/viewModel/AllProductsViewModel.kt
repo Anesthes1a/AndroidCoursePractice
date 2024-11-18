@@ -8,6 +8,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
+import com.example.androidcoursepractice.domain.entity.ProductEntity
 import com.example.androidcoursepractice.domain.repository.IProductRepository
 import com.example.androidcoursepractice.launchLoadingAndError
 import com.example.androidcoursepractice.presentation.handlers.AllProductsScreenHandler
@@ -21,6 +22,8 @@ class AllProductsViewModel(
     private val repository: IProductRepository,
     private val mapper : ProductEntityToUIMapper
 ): ViewModel() {
+
+    private var products: List<ProductEntity> = emptyList()
 
     private val mutableState = MutableItemsListState()
     val viewState = mutableState as ItemsListState
@@ -37,8 +40,8 @@ class AllProductsViewModel(
             mutableState.items = emptyList()
             mutableState.error = null
 
-            mutableState.items =
-                mapper.map(repository.getProducts())
+            products = repository.getProducts()
+            mutableState.items = products.map { mapper.mapOne(it) }
         }
     }
 

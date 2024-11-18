@@ -1,6 +1,5 @@
 package com.example.androidcoursepractice.presentation.viewModel
 
-
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -11,16 +10,17 @@ import com.example.androidcoursepractice.domain.repository.IProductRepository
 import com.example.androidcoursepractice.launchLoadingAndError
 import com.example.androidcoursepractice.presentation.mapper.ProductEntityToUIMapper
 import com.example.androidcoursepractice.presentation.model.ProductUIModel
-import com.example.androidcoursepractice.presentation.state.ItemState
-import kotlinx.coroutines.launch
+import com.example.androidcoursepractice.presentation.state.FavoriteListState
+import com.example.androidcoursepractice.presentation.state.ItemsListState
 
-class ProductDetailViewModel(
+class FavoriteProductsViewModel(
     private val repository: IProductRepository,
     private val mapper : ProductEntityToUIMapper
-): ViewModel() {
+) : ViewModel() {
+    private var products: List<ProductEntity> = emptyList()
 
-    private val mutableState = MutableItemState()
-    val viewState = mutableState as ItemState
+    private val mutableState = MutableItemsListState()
+    val viewState = mutableState as FavoriteListState
 
     init {
         loadProducts()
@@ -31,28 +31,16 @@ class ProductDetailViewModel(
             handleError = { mutableState.error = it.localizedMessage },
             updateLoading = { mutableState.loading = it }
         ) {
-            mutableState.item = ProductUIModel()
+            mutableState.items = emptyList()
             mutableState.error = null
 
-            mutableState.item =
-                mapper.mapOne(repository.getProductById(mutableState.id))
+            products = repository.getSavedProducts()
+            mutableState.items = products.map { mapper.mapOne(it) }
         }
     }
 
-    fun setId(id: Int) {
-        mutableState.id = id
-        loadProducts()
-    }
-
-    fun onFavoriteClick(){
-        viewModelScope.launch {
-            repository.saveProduct(repository.getProductById(mutableState.id))
-        }
-    }
-
-    private class MutableItemState : ItemState {
-        override var item: ProductUIModel by mutableStateOf(ProductUIModel())
-        override var id: Int by mutableStateOf(0)
+    private class MutableItemsListState : FavoriteListState {
+        override var items: List<ProductUIModel> by mutableStateOf(emptyList())
         override var error: String? by mutableStateOf(null)
         override var loading: Boolean by mutableStateOf(false)
     }

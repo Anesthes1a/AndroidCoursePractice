@@ -8,7 +8,7 @@ import kotlinx.parcelize.Parcelize
 @Immutable
 @Parcelize
 data class ProductUIModel (
-    val id: Int = 0,
+    val id: Long = 0L,
     val title: String = "Empty",
     val price: String = "Empty",
     val category: String = "Empty",

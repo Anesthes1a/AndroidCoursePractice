@@ -14,7 +14,7 @@ class ProductResponseToEntityMapper {
 
     fun mapOne(response: ProductResponse?): ProductEntity {
         return ProductEntity(
-            id = response?.id ?: 0,
+            id = response?.id ?: 0L,
             title = response?.title ?: "Нет названия",
             price = response?.price ?: 0F,
             category = response?.category ?: "Нет категории",

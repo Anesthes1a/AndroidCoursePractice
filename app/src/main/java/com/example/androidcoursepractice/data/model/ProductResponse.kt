@@ -4,7 +4,7 @@ import com.google.errorprone.annotations.Keep
 
 @Keep
 class ProductResponse (
-    val id: Int?,
+    val id: Long?,
     val title: String?,
     val price: Float?,
     val category: String?,

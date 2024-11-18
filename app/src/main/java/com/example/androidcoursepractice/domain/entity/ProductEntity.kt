@@ -1,7 +1,7 @@
 package com.example.androidcoursepractice.domain.entity
 
 data class ProductEntity (
-    val id: Int,
+    val id: Long,
     val title: String,
     val price: Float,
     val category: String,

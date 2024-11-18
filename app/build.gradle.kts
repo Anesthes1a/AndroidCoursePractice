@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     kotlin("plugin.serialization") version "1.9.21"
     id("kotlin-parcelize")
+    id("com.google.devtools.ksp") version "1.9.0-1.0.13"
 }
 
 android {
@@ -79,6 +80,14 @@ dependencies {
     implementation(libs.modo.compose)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.material)
+    implementation("androidx.room:room-runtime:2.6.1")
+    annotationProcessor("androidx.room:room-compiler:2.6.1")
+    ksp("androidx.room:room-compiler:2.6.1")
+    implementation("androidx.room:room-ktx:2.6.1")
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+    implementation("androidx.datastore:datastore-core-android:1.1.1")
+    implementation("androidx.datastore:datastore-preferences-rxjava2:1.1.1")
+    implementation("androidx.datastore:datastore-preferences-rxjava3:1.1.1")
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))

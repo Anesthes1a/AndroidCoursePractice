@@ -38,6 +38,7 @@ fun NavGraph(
         }
         composable(route = ScreenBarElements.FavouriteProducts.route){
             FavoriteProductsScreen()
+                .Content(modifier = Modifier.fillMaxSize())
         }
         composable(route = ScreenBarElements.Profile.route){
             ProfileScreen()

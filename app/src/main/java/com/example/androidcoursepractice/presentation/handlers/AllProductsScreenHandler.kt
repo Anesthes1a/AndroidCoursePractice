@@ -7,7 +7,7 @@ import com.example.androidcoursepractice.presentation.model.ScreenBarElements
 class AllProductsScreenHandler(
     val navController: NavHostController
 ) {
-    fun onToProductDetail(index: Int){
+    fun onToProductDetail(index: Long){
         navController.navigate(ScreenBarElements.ProductDetail.route+"/$index")
         if (navController.currentBackStackEntry?.lifecycle?.currentState == Lifecycle.State.RESUMED) {
             navController.popBackStack()

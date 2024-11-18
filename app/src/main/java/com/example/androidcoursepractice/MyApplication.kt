@@ -3,6 +3,7 @@ package com.example.androidcoursepractice
 import android.app.Application
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.rememberNavController
+import com.example.androidcoursepractice.di.dbModule
 import com.example.androidcoursepractice.di.networkModule
 import com.example.androidcoursepractice.di.rootModule
 import com.example.androidcoursepractice.presentation.screens.BottomBarScreen
@@ -26,7 +27,7 @@ class MyApplication : Application(){
         startKoin {
             androidLogger()
             androidContext(this@MyApplication)
-            modules(rootModule, networkModule)
+            modules(rootModule, networkModule, dbModule)
         }
     }
 
